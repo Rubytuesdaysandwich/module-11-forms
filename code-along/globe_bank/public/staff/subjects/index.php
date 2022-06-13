@@ -17,7 +17,7 @@
     <h1>Subjects</h1>
 
     <div class="actions">
-      <a class="action" href="">Create New Subject</a><!--button to create a new subject in table-->
+      <a class="action" href="<?php echo url_for('/staff/subjects/new.php')?>">Create New Subject</a><!--button to create a new subject in table-->
     </div>
 
   	<table class="list"><!--start table-->
@@ -37,9 +37,9 @@
           <td><?php echo $subject['position']; ?></td><!--table data-->
           <td><?php echo $subject['visible'] == 1 ? 'true' : 'false'; ?></td><!--table data-->
     	  <td><?php echo $subject['menu_name']; ?></td><!--table data-->
-          <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id='.$subject['id']);?>">View</a></td><!--table data-->
-          <td><a class="action" href="">Edit</a></td><!--table data-->
-          <td><a class="action" href="">Delete</a></td><!--table data-->
+          <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id='.h(u($subject['id'])));?>">View</a></td><!--table data-->
+          <td><a class="action" href="<?php echo url_for('/staff/subjects/edit.php?id='.h(u($subject['id'])));?>">Edit</a></td><!--table data-->
+          <td><a class="action" href="<?php echo url_for('/staff/subjects/delete.php?id='.h(u($subject['id'])));?>">Delete</a></td><!--table data-->
     	  </tr>
       <?php } ?>
   	</table><!--end table-->
