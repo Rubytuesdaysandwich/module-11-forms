@@ -1,4 +1,6 @@
-<?php require_once('../../../private/initialize.php');//!Header data requires there to be no spaces
+<?php 
+
+require_once('../../../private/initialize.php');//!Header data requires there to be no spaces
 //!white space like this is ok
 //single page processing sends the information back to the user before submission so they can make sure it is correct submits it itself back to itself.
 
@@ -13,15 +15,30 @@ if(!isset($_GET['id'])){//makes the page go back to subject/new.php if there is 
 if(is_post_request()){//checking if it is a post request.
     // Handle form values sent by new.php
     
-        $menu_name = $_POST['menu_name'] ?? '';
-        $position = $_POST['position'] ?? '';
-        $visible = $_POST['visible'] ?? '';
-    
-        echo "Form parameters<br />";
-        echo "Menu name: " . $menu_name . "<br />";
-        echo "Position: " . $position . "<br />";
-        echo "Visible: " . $visible . "<br />";
-    }//for single page processing
+    $subject = [];
+    $subject['id'] = $id;
+    $subject['menu_name'] = $_POST['menu_name'] ?? '';
+    $subject['position'] = $_POST['position'] ?? '';
+    $subject['visible'] = $_POST['visible'] ?? '';
+
+    $result = update_subject($subject);
+    if($result === true) {
+    redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
+  } else {
+    $errors = $result;
+    //var_dump($errors);
+  }
+
+} else {
+
+  $subject = find_subject_by_id($id);
+
+}
+
+$subject_set = find_all_subjects();
+$subject_count = mysqli_num_rows($subject_set);
+mysqli_free_result($subject_set);
+
 
 ?>
 <?php $page_title = 'Edit Subject'; ?>
@@ -46,7 +63,11 @@ if(is_post_request()){//checking if it is a post request.
         <dt>Position</dt><!--get position-->
         <dd>
           <select name="position"><!--get the position-->
+            <option value="0">0</option>
             <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
           </select>
         </dd>
       </dl>
