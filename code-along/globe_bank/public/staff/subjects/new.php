@@ -24,8 +24,6 @@ if(is_post_request()){//checking to see if it is a post request. If it is a get 
   //display the blank form
   }
   ?>
-  
-
 
 <?php $page_title = 'Create Subject'; ?>
 <?php include(SHARED_PATH . '/staff_header.php');//path to header html ?>
