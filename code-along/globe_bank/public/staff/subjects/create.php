@@ -1,7 +1,7 @@
 <?php
 require_once('../../../private/initialize.php');
 
-if(is_post_request()){
+if(is_post_request()){//checking to see if it is a post request. If it is a get request we get redirected to staff/subjects/new.php'
 // Handle form values sent by new.php
 
     $menu_name = $_POST['menu_name'] ?? '';
