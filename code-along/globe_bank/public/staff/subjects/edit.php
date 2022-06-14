@@ -31,6 +31,9 @@ if(is_post_request()){//checking if it is a post request.
 
   <a class="back-link" href="<?php echo url_for('/staff/subjects/index.php'); ?>">&laquo; Back to List</a><!--send user back to index.php-->
 
+
+<?php echo display_errors($errors);//display the errors at the top of them form?>
+
   <div class="subject edit">
     <h1>Edit Subject</h1>
 
