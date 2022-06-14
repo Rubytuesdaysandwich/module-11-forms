@@ -1,9 +1,8 @@
 <?php require_once('../../../private/initialize.php');//!Header data requires there to be no spaces
 //!white space like this is ok
 if(!isset($_GET['id'])){
-    redirect_to();
-}
-id=$_GET['id'];
+    redirect_to(url_for('staff/subjects/new.php'));
+$id=$_GET['id'];
 
 
 
@@ -20,8 +19,6 @@ if(is_post_request()){
         echo "Menu name: " . $menu_name . "<br />";
         echo "Position: " . $position . "<br />";
         echo "Visible: " . $visible . "<br />";
-    }else {
-        //redirect_to(url_for('staff/subjects/new.php'));
     }
 ?>
 
