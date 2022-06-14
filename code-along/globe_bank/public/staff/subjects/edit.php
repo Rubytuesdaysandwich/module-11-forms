@@ -1,6 +1,6 @@
 <?php require_once('../../../private/initialize.php');//!Header data requires there to be no spaces
 //!white space like this is ok
-//single page processing sends the information back to the user before submission so they can make sure it is correct
+//single page processing sends the information back to the user before submission so they can make sure it is correct submits it itself back to itself.
 
 if(!isset($_GET['id'])){//makes the page go back to subject/new.php if there is no id present
     redirect_to(url_for('staff/subjects/new.php'));}
