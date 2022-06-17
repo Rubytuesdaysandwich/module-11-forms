@@ -1,34 +1,24 @@
-
 <?php
-function validate() {
-    $errors = [];//error array gethers errors as it goes through the function dumps them all at the same time on return $errors
+function validate($investment,$interest_rate,$years){
+    $error_message ="";
+if($investment < 0 || is_blank($investment)){
+    $error_message  ="Must be a valid number greater than 0";
 
-    // investment_amount
-    //be greater than 0
-  
-   if($investment > 0){
-    $errors ="The investment amount must br greater than 0";
-   }
+if($interest_rate > 15){
+    $error_message  ="interest rate must be less than or equal to 15";
+}elseif($interest_rate <= 0){
+    $error_message  ="interest rate must be greater than 0";
+}
 
-    // interest rate
-    // be valid number
-    // greater than 0
-    // less than or equal to 15
-    //requires interest rate to be more than 0 and less than 15
-    if($interest_rate <= 0) {
-      $errors[] = "interest rate must be a valid number greater than 0.";
-    }
-    if($years > 31) {
-      $errors[] = "years must be less than 31.";//position value must be less than 999
-    }
+if($years > 31){
+    $error_message  ="years should be less than or equal to 31";
+}elseif($years <= 0){
+    $error_message  ="Years should be greater than 0";
+}
 
-    // years
-    // must be valid whole number
-    // greater than 0
-    // less than 31
-    return $errors;
-  }
+return $error_message;
+}
 
+}
 
-
-  ?>
+?>
