@@ -1,4 +1,5 @@
 <?php 
+require_once('../private/initialize.php');
     //set default value of variables for initial page load
     if (!isset($investment)) { $investment = ''; } 
     if (!isset($interest_rate)) { $interest_rate = ''; } 

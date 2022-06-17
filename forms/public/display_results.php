@@ -1,4 +1,5 @@
 <?php
+require_once('../private/initialize.php');
     // get the data from the form
     $investment = "";
     $interest_rate = "";
@@ -21,9 +22,9 @@
     }
 
     // apply currency and percent formatting
-    $investment_f = '$'.number_format($investment, 2);
+    $investment_f = '$'.number_format($investment, '2');
     $yearly_rate_f = $interest_rate.'%';
-    $future_value_f = '$'.number_format($future_value, 2);
+    $future_value_f = '$'.number_format($future_value, '2');
 ?>
 <!DOCTYPE html>
 <html>

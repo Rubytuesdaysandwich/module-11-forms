@@ -24,7 +24,7 @@ ob_start();//output buffering is turned on
   $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
   define("WWW_ROOT", $doc_root);
 require_once('functions.php');//getting the functions from the functions page
-require_once('database.php');//calling databse.php
+require_once('database.php');//calling database.php
 require_once('query_functions.php');//calling query_functions
 require_once('validation_functions.php');//calling validation_functions
 
