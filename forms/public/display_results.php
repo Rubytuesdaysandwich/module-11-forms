@@ -1,12 +1,16 @@
 <?php
 require_once('../private/initialize.php');
+
+$errors="";
+
     // get the data from the form
-    $investment = "";
-    $interest_rate = "";
-    $years = "";
+    $investment = $_POST["investment"];
+    $interest_rate = $_POST["interest_rate"];
+    $years = $_POST["years"];
 
     // validate investment inputs here
     $error_message = "";
+    echo display_errors($errors);
     
 
     // if an error message exists, go to the index page
@@ -22,9 +26,9 @@ require_once('../private/initialize.php');
     }
 
     // apply currency and percent formatting
-    $investment_f = '$'.number_format($investment, '2');
+    $investment_f = '$'.number_format($investment, 2);
     $yearly_rate_f = $interest_rate.'%';
-    $future_value_f = '$'.number_format($future_value, '2');
+    $future_value_f = '$'.number_format($future_value, 2);
 ?>
 <!DOCTYPE html>
 <html>
