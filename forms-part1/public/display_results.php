@@ -1,7 +1,6 @@
 <?php
 require_once('../private/initialize.php');
 
-//$errors="";
 
     // get the data from the form
     $investment = $_POST["investment"];
