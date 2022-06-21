@@ -3,7 +3,7 @@ function validate($investment,$interest_rate,$years){
     $error_message ="";
 if($investment < 0 || is_blank($investment)){
     $error_message  .="Must be a valid number greater than 0 ";
-
+}
 if($interest_rate > 15){
     $error_message  .="interest rate must be less than or equal to 15 ";
 }elseif($interest_rate <= 0){
@@ -17,7 +17,7 @@ if($years > 31){
 }
 
 return $error_message;
-}
+
 
 }
 
