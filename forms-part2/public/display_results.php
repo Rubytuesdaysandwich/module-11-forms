@@ -1,7 +1,6 @@
 <?php
 require_once('../private/initialize.php');
 
-//$errors="";
 
     // get the data from the form
     $investment = $_POST["investment"];
@@ -9,7 +8,7 @@ require_once('../private/initialize.php');
     $years = $_POST["years"];
 
     // validate investment inputs here
-   
+    $error_message = validate($investment,$interest_rate,$years);
    //echo display_errors($errors);
     
 
