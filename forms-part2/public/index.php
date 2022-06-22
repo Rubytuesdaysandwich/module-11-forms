@@ -13,12 +13,71 @@ require_once('../private/initialize.php');
 </head>
 
 <body>
+
+<?php
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    if(!empty($_POST['investment'])){
+        $investment = $_POST['investment'];
+    }else{
+        $investment="";
+        //echo "enter investment ";
+    }
+
+    if(!empty($_POST['interest_rate'])){
+        $investment = $_POST['interest_rate'];
+    }else{
+        $investment="";
+        //echo "enter interest rate ";
+    }
+
+    if(!empty($_POST['years'])){
+        $investment = $_POST['years'];
+    }else{
+        $investment="";
+        //echo "enter years ";
+    }
+    
+
+
+// get the data from the form
+// $investment = $_POST["investment"];
+// $interest_rate = $_POST["interest_rate"];
+// $years = $_POST["years"];
+
+// validate investment inputs here
+
+//echo display_errors($errors);
+
+
+// if an error message exists, go to the index page
+// if ($error_message != '') {
+//     echo "error";
+// }
+
+// calculate the future value
+$future_value = $investment;
+for ($i = 1; $i <= $years; $i++) {
+    $future_value = 
+        $future_value + ($future_value * $interest_rate * .01); 
+}
+
+// apply currency and percent formatting
+$investment_f = '$'.number_format($investment, 2);
+$yearly_rate_f = $interest_rate.'%';
+$future_value_f = '$'.number_format($future_value, 2);
+}
+$error_message = validate($investment,$interest_rate,$years);
+//$error_message = validate($investment,$interest_rate,$years);//gives error message
+?>
+
     <main>
     <h1>Future Value Calculator</h1>
     <?php if (!empty($error_message)) { ?>
         <p class="error"><?php echo htmlspecialchars($error_message); ?></p>
     <?php } ?>
-    <form action="display_results.php" method="post">
+    <form action="index.php" method="post">
 
         <div id="data">
             <label>Investment Amount:</label>
@@ -42,7 +101,7 @@ require_once('../private/initialize.php');
             <input type="submit" value="Calculate"><br>
         </div>
 
-    </form>
+    </form> 
     </main>
 </body>
 </html>

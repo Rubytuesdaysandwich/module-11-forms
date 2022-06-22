@@ -1,5 +1,6 @@
 <?php
 function validate($investment,$interest_rate,$years){
+if(is_post_request()){ 
     $error_message ="";
 if($investment < 0 || is_blank($investment)){
     $error_message  .="Must be a valid number greater than 0 ";
@@ -18,7 +19,7 @@ if($years > 31){
 
 return $error_message;
 
-
+}
 }
 
 ?>
