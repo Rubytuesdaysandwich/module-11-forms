@@ -92,10 +92,11 @@ $error_message = validate($investment,$interest_rate,$years);
     </form> 
     <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($investment>0 && ($interest_rate>0) && ($years>0)){
     echo (nl2br( " investment {$investment_f}\n"));
     echo (nl2br( " Yearly rate {$yearly_rate_f}\n"));
     echo (nl2br( "Future Value {$future_value_f}\n"));
-    }
+    }}
     ?>
     </main>
 </body>
