@@ -18,44 +18,27 @@ require_once('../private/initialize.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-    if(!empty($_POST['investment'])){
+    if(!empty($_POST['investment'])){//if the post index is empty assign it to investment
         $investment = $_POST['investment'];
     }else{
-        $investment="";
-        //echo "enter investment ";
+        $investment=0;//if the entry box on the form has nothing in it, it will default to 0
+        
     }
 
-    if(!empty($_POST['interest_rate'])){
-        $investment = $_POST['interest_rate'];
+    if(!empty($_POST['interest_rate'])){//if the post index is empty assign it to interest rate
+        $interest_rate = $_POST['interest_rate'];
     }else{
-        $investment="";
-        //echo "enter interest rate ";
+        $interest_rate=0;//if the entry box on the form has nothing in it, it will default to 0
+       
     }
 
-    if(!empty($_POST['years'])){
-        $investment = $_POST['years'];
+    if(!empty($_POST['years'])){//if the post index is empty assign it to years
+        $years = $_POST['years'];
     }else{
-        $investment="";
-        //echo "enter years ";
+        $years=0;//if the entry box on the form has nothing in it, it will default to 0
+       
     }
     
-
-
-// get the data from the form
-// $investment = $_POST["investment"];
-// $interest_rate = $_POST["interest_rate"];
-// $years = $_POST["years"];
-
-// validate investment inputs here
-
-//echo display_errors($errors);
-
-
-// if an error message exists, go to the index page
-// if ($error_message != '') {
-//     echo "error";
-// }
-
 // calculate the future value
 $future_value = $investment;
 for ($i = 1; $i <= $years; $i++) {
@@ -67,8 +50,13 @@ for ($i = 1; $i <= $years; $i++) {
 $investment_f = '$'.number_format($investment, 2);
 $yearly_rate_f = $interest_rate.'%';
 $future_value_f = '$'.number_format($future_value, 2);
+
+// echo (nl2br( " investment {$investment_f}\n"));
+// echo (nl2br( " Yearly rate {$yearly_rate_f}\n"));
+// echo (nl2br( "Future Value {$future_value_f}\n"));
 }
 $error_message = validate($investment,$interest_rate,$years);
+
 //$error_message = validate($investment,$interest_rate,$years);//gives error message
 ?>
 
@@ -102,6 +90,13 @@ $error_message = validate($investment,$interest_rate,$years);
         </div>
 
     </form> 
+    <?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    echo (nl2br( " investment {$investment_f}\n"));
+    echo (nl2br( " Yearly rate {$yearly_rate_f}\n"));
+    echo (nl2br( "Future Value {$future_value_f}\n"));
+    }
+    ?>
     </main>
 </body>
 </html>
